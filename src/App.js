@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import 'semantic-ui-css/semantic.min.css';
+import { Segment, Grid, Button, Header, Container } from "semantic-ui-react";
 
-function App() {
+function Counter() {
+  const [count, setCount] = useState(0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container textAlign='center'>
+        <Segment raised style={{margin: "15% 37% 3%", padding: "3% 4%", borderRadius: "8px" }}>
+            {/* Single inline CSS USED */}
+            <Grid columns={2}>
+                    <Container textAlign="center">
+                        <Header as='h4'>Count</Header>
+                        <Header as='h1'>{count}</Header>
+                    </Container>
+                <Grid.Row>
+                    <Button
+                    positive
+                    onClick={() => setCount(count + 1)}
+                    content="Increment"
+                    />
+                    <Button
+                    negative
+                    disabled={count === 0}
+                    onClick={() => setCount(count > 0 ? count - 1 : 0)}
+                    content="Decrement"
+                    />
+                </Grid.Row>
+            </Grid>
+        </Segment>
+        <Header as={"h5"}>Done By Rohit Kumar Thakur - 12010323</Header>
+    </Container>
   );
 }
 
-export default App;
+export default Counter;
+
